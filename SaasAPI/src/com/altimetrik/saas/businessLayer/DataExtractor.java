@@ -8,7 +8,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.text.PDFTextStripperByArea;
 
-//import com.sun.mail.imap.protocol.MailboxInfo;
+
 
 public class DataExtractor {
 
@@ -18,11 +18,11 @@ public class DataExtractor {
 	
 	public DataExtractor(String path,String senderEmail) throws CustomException{
 		
-//		System.out.println("Entered dataExtracor ");  R
+
 		
 		this.path = path;
 		this.extractData();
-		new DataCurator(text1,text2,text3,text4,text5,senderEmail);
+		new DataAdd(text1,text2,text3,text4,text5,senderEmail);
 	}
 	
 	public String getText1(){
@@ -47,7 +47,7 @@ public class DataExtractor {
 	
 	protected void extractData(){
 		File file = new File(this.path);
-//		String text1 = "",text2 = "",text3 = "",text4 = "",text5 = "";
+
 		PDDocument doc = null;
 		try{
 			doc = PDDocument.load(file);
@@ -78,7 +78,7 @@ public class DataExtractor {
 	        this.text4 = pdfStripper.getTextForRegion("address").trim();
 	        System.out.println(text4);
 	        
-//			long tic = System.currentTimeMillis();
+
 	        
 	        this.text5 = pdfStripper.getTextForRegion("total invoice").trim();
 	        
@@ -86,7 +86,7 @@ public class DataExtractor {
 	        String temp = arr[arr.length-1];
 	        this.text5 = "";
 	        
-//	        System.out.println("*" + temp); 
+
 	        
 	        for(int i=0;i<temp.length();i++){
 	        	if(temp.charAt(i) == ',' || temp.charAt(i) == '$')	
@@ -96,10 +96,7 @@ public class DataExtractor {
 	        
 	        System.out.println(this.text5);
 	        
-	        
-//	        long toc = System.currentTimeMillis();
-	        
-//	        System.out.println(toc - tic);
+
         
 		}catch(IOException e){
 			e.printStackTrace();
@@ -108,14 +105,12 @@ public class DataExtractor {
 					if(doc != null)
 						doc.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 		}
 		
 	}
 	
-//	public static void main(String[] args) throws CustomException {
-//		 new DataExtractor("C:\\Users\\kmuwani\\Acushnet-5.pdf","dfsdf");
-//	}
+
 }

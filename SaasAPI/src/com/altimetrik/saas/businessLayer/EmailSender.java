@@ -19,21 +19,15 @@ public class EmailSender {
 	private static String emailAddress;
 	protected static Properties userCredentials = new Properties();
 	
-	public EmailSender(String _emailAddress){
-		emailAddress = _emailAddress;
+	public EmailSender(String mail){
+		emailAddress = mail;
 		String to = emailAddress;
-		String subject = "Invoice Bill Status";
-		String body = "Your invoice has been approved. Keep up the good work";
+		String subject = "Invoice Status";
+		String body = "Your invoice has been approved.";
 		EmailSender.sendFromEmail(to,subject,body);
 	}
 	
-//	public Integer call(){
-//		String to = emailAddress;
-//		String subject = "Invoice Bill Status";
-//		String body = "Your invoice has been approved. Keep up the good work";
-//		EmailSender.sendFromEmail(to,subject,body);
-//		return 0;
-//	}
+
 	
 	
 	
@@ -74,7 +68,7 @@ public class EmailSender {
 		    transport.connect(host, userCredentials.getProperty("userName"), userCredentials.getProperty("password"));
 		    transport.sendMessage(message, message.getAllRecipients());
 		    System.out.println("Message sent");
-//		    return true;
+
 
 		} catch (AddressException e) {
 			e.printStackTrace();
