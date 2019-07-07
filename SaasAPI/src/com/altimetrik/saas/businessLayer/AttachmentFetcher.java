@@ -16,7 +16,7 @@ import javax.mail.Session;
 import javax.mail.Store;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.search.FlagTerm;
-
+//making class as a tread using runnable so that it can run fetch mails 24*7
 public class AttachmentFetcher implements Runnable {
 
 	protected static Properties userCredentials = new Properties();

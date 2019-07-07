@@ -14,7 +14,7 @@ public class DataExtractor {
 
 	protected String path;
 	protected String [] arr = null;
-	protected String text1,text2,text3,text4,text5;
+	protected String invoice,po,date,address,total;
 	
 	public DataExtractor(String path,String senderEmail) throws CustomException{
 		
@@ -22,27 +22,27 @@ public class DataExtractor {
 		
 		this.path = path;
 		this.extractData();
-		new DataAdd(text1,text2,text3,text4,text5,senderEmail);
+		new DataAdd(invoice,po,date,address,total,senderEmail);
 	}
 	
-	public String getText1(){
-		return this.text1;	
+	public String getinvoice(){
+		return this.invoice;	
 	}
 	
-	public String getText2(){
-		return this.text2;
+	public String getpo(){
+		return this.po;
 	}
 	
-	public String getText3(){
-		return this.text3;
+	public String getdate(){
+		return this.date;
 	}
 	
-	public String getText4(){
-		return this.text4;
+	public String getaddress(){
+		return this.address;
 	}
 	
-	public String getText5(){
-		return this.text5;
+	public String gettotal(){
+		return this.total;
 	}
 	
 	protected void extractData(){
@@ -66,35 +66,35 @@ public class DataExtractor {
 	        pdfStripper.addRegion( "total invoice", Rect5 );
 	        pdfStripper.extractRegions(page); 
 			
-	        this.text1 = pdfStripper.getTextForRegion("invoice No").trim();
-	        System.out.println(text1); 
+	        this.invoice = pdfStripper.getTextForRegion("invoice No").trim();
+	        System.out.println(invoice); 
 	        
-	        this.text2 = pdfStripper.getTextForRegion("invoice Date").trim();
-	        System.out.println(text2);
+	        this.date = pdfStripper.getTextForRegion("invoice Date").trim();
+	        System.out.println(date);
 	        
-	        this.text3 = pdfStripper.getTextForRegion("Customer PO").trim();
-	        System.out.println(text3);
+	        this.po = pdfStripper.getTextForRegion("Customer PO").trim();
+	        System.out.println(po);
 	  
-	        this.text4 = pdfStripper.getTextForRegion("address").trim();
-	        System.out.println(text4);
+	        this.address = pdfStripper.getTextForRegion("address").trim();
+	        System.out.println(address);
 	        
 
 	        
-	        this.text5 = pdfStripper.getTextForRegion("total invoice").trim();
+	        this.total = pdfStripper.getTextForRegion("total invoice").trim();
 	        
-	        arr = this.text5.split("\n");
+	        arr = this.total.split("\n");
 	        String temp = arr[arr.length-1];
-	        this.text5 = "";
+	        this.total = "";
 	        
 
 	        
 	        for(int i=0;i<temp.length();i++){
 	        	if(temp.charAt(i) == ',' || temp.charAt(i) == '$')	
 	        		continue;
-	        	this.text5 += temp.charAt(i);
+	        	this.total += temp.charAt(i);
 	        }
 	        
-	        System.out.println(this.text5);
+	        System.out.println(this.total);
 	        
 
         

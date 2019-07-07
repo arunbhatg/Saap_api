@@ -15,7 +15,7 @@ import com.altimetrik.saas.businessLayer.DatabaseObject;
 
 public class AccountsPay {
 
-	public static final int NTHREADS = 1;
+	public static final int NTHREADS = 5;
 
 	public static void runApplication() throws CustomRuntimeException, InterruptedException {
 
